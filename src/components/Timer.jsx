@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useTimer from "../hooks/timer";
 
 const Timer = (props) => {
@@ -8,7 +7,9 @@ const Timer = (props) => {
 
   return (
     <>
-      {days} Days : {hours} Hours : {minutes} Minutes : {seconds} Seconds
+      <p className="text-center">
+        {days < 0 ? 0 : days} Days : {hours < 0 ? 0 : hours} Hours : {minutes < 0 ? 0 : minutes} Minutes : {seconds < 0 ? 0 : seconds} Seconds <br/>
+      </p>
     </>
   );
 };

@@ -13,8 +13,8 @@ const useTimer = (deadline) => {
   useEffect(() => {
 
     const getTime = () => {
-      const time = new Date(deadline) - new Date();
-
+      const time = new Date(deadline) - new Date(); 
+      
       setFinalTime({
         days: Math.floor(time / (1000 * 60 * 60 * 24)),
         hours: Math.floor((time / (1000 * 60 * 60)) % 24),
@@ -32,12 +32,5 @@ const useTimer = (deadline) => {
 
   return finalTime;
 };
-
-
-// const useAddTimer = () => {
-//   const uniqueId = new Date().toISOString().toString();
-//   setTimers([...timers, { uniqueId, endTime }]);
-// }
-
 
 export default useTimer;
