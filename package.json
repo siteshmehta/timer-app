@@ -2,7 +2,6 @@
   "name": "timer-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://siteshmehta.github.io/timer-app",
   "dependencies": {
     "@tanstack/react-query": "^4.29.12",
     "@testing-library/jest-dom": "^5.16.5",
