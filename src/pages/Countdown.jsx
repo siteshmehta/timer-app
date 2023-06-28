@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function Countdown() {
 
-  const tempCurrentDate = new Date(Date.now()).toISOString().slice(0, 16);  //by default input -> calender value
+  const tempCurrentDate = new Date().toLocaleString();  //by default input -> calender value
   const [endTime, setEndTime] = useState(tempCurrentDate);
 
 
@@ -67,7 +67,7 @@ export default function Countdown() {
                     </thead>
                     <tbody>
                       {
-                        timers.length === 0 ?
+                        !timers.length  ?
                           (<>
                             <tr className="text-center font-semibold underline"><td colSpan={4}>No timer exist</td></tr>
                           </>) :

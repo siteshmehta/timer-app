@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useTimeZones } from "../hooks/worldClock.js";
 import { useQuery } from "@tanstack/react-query";
@@ -8,14 +8,16 @@ export default function WorldClock() {
   const { timeZones: listOftimeZones } = useTimeZones();
   const [timeZone, setTimeZone] = useState("");
   const [displayDate, setDisplayDate] = useState("");
+  const timezoneOption = useRef();
 
 
 
-  //update the timezone 
+  //update the timezone
   useEffect(() => {
     let existingTimeZone = localStorage.getItem("currentTimezone");
     if (listOftimeZones) {
       if (existingTimeZone) {
+        timezoneOption.current.value = existingTimeZone;
         setTimeZone(existingTimeZone);
       } else {
         localStorage.setItem("currentTimezone", listOftimeZones[0]);
@@ -73,7 +75,8 @@ export default function WorldClock() {
             Select timezone : &nbsp;
             <select onChange={(values) => {
               setTimeZone(values.target.value);
-            }} className="rounded p-1">
+              localStorage.setItem("currentTimezone", values.target.value);
+            }} className="rounded p-1" ref={timezoneOption}>
               {
                 listOftimeZones && listOftimeZones.map((value) => {
                   return <option key={value} value={value}>{value}</option>
